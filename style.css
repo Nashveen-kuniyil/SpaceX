@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'd-dinregular';
+    background: #000;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+ul {
+    list-style-type: none;
+}
+
+section {
+    position: relative;
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+}
+
+.section-content {
+    position: absolute;
+    bottom: 120px;
+    left: 110px;
+    max-width: 560px;
+}
+
+.section-content p {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.section-content h1 {
+    font-size: 47px;
+    font-family: 'd-dindin-bold';
+    margin-bottom: 20px;
+    animation: fadeInUp 0.75s ease-in-out;
+    animation-fill-mode: both;
+}
+
+.section-content span {
+    font-size: 13.5px;
+    font-family: 'd-dindin-bold';
+    margin-bottom: 20px;
+}
+
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* header styling */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 3;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: 'd-dindin-bold';
+}
+
+.logo {
+    width: 210px;
+    height: auto;
+    margin-left: 90px;
+}
+
+
+
+.logo a svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: -9px;
+}
+
+.fill-white {
+    fill: #fff;
+}
+
+.desktop-main-menu {
+    margin-right: auto;
+}
+
+.desktop-main-menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.desktop-main-menu ul li {
+    margin-left: 30px;
+    font-size: 13.5px;
+    position: relative;
+}
+
+.shopping {
+    margin-right: 50px;
+    font-size: 13.5px;
+    position: relative;
+}
+
+/* hamburger menu */
+.hamburger {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    width: 20px;
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger-top,.hamburger-middle,.hamburger-bottom {
+    position: absolute;
+    width: 17px;
+    height: 2px;
+    top: 5.5px;
+    left: -10px;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.4s ease-in;
+}
+
+.hamburger-middle {
+    transform: translateY(4px);
+}
+
+.hamburger-bottom {
+    transform: translateY(8px);
+}
+
+/* open hamburger */
+.open {
+    transform: rotate(90deg);
+    top: 61.5px;
+    right: 25px;
+}
+
+.open .hamburger-top {
+    transform: rotate(45deg);
+}
+
+.open .hamburger-middle {
+    opacity: 0;
+}
+
+.open .hamburger-bottom {
+    transform: rotate(-45deg);
+}
+
+#overlay {
+    transition: all 0.6s ease;
+}
+
+.overlay-show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* hide desktop menu items */
+.mobile-only {
+    display: none;
+}
+
+/* mobile menu styling */
+.mobile-main-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100vh;
+    z-index: 4;
+    background-color: #000;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.show-menu {
+    transform: translateX(0);
+}
+
+.mobile-main-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-top: 60px;
+    padding: 30px;
+    width: 100%;
+}
+
+.mobile-main-menu ul li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.25);
+    width: 100%;
+    padding-bottom: 8px;
+    text-align: right;
+    position: relative;
+}
+
+.mobile-main-menu ul li a {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-main-menu ul li a:hover {
+    opacity: 0.55;
+}
+
+/* menu animation */
+.desktop-main-menu ul li a::after,
+.shopping a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.desktop-main-menu ul li a:hover::after,
+.shopping a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+    transition-duration: 0.4s;
+}
+
+/* button animation */
+
+.btn {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    min-width: 130px;
+    padding: 16px 58px;
+    margin-top: 10px;
+    border: 2px solid #fff;
+    overflow: hidden;
+    z-index: 2;
+    animation-fill-mode: both;
+    animation: fadeInUp 0.75s ease-in-out 0.1s;
+}
+
+.btn:hover span {
+    color: #000;
+}
+
+.btn .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    background: #fff;
+    z-index: -1;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn:hover .hover {
+    transform: translateY(0);
+}
+
+
+
+/* scroll arrow animation */
+.scroll-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 49%;
+    animation: fadebounce 5s infinite;
+}
+
+@keyframes fadebounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    40% {
+        opacity: 1;
+        transform: translateY(15px);
+    }
+}
+
+
+
+/* footer styling */
+footer {
+    position: relative;
+    padding: 43px 0;
+    font-family: 'd-dindin-bold';
+    text-transform: uppercase;
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2.5px;
+}
+
+footer ul li {
+    margin-left: 45px;
+    font-size: 12px;
+    line-height: 2.5;
+    position: relative;
+}
+
+footer ul li:first-child {
+    margin-left: 0;
+    font-family: 'd-dinregular';
+    opacity: 0.5;
+}
+
+footer ul li a:hover {
+    opacity: 0.5;
+    transition: opacity ease-in 0.4s;
+}
+
+/* text animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(120px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* bg images */
+.section-a {
+    background-image: url('./images/Starlink_G9_10_Streak_OS_56_4236_Desktop_655dc0396e.jpg');
+}
+
+.section-b {
+    background-image: url('./images/Homepage_Starlink_SLC_40_Desktop_5b1e6b5dd0.jpg');
+}
+
+.section-c {
+    background-image: url('./images/Desktop_homepage_4591bac024.jpg');
+}
+
+.section-d {
+    background-image: url('./images/CRS_31_pad40dome_DSC_3545_desktop_8b508deafd.jpg');
+}
+
+.section-e{
+    background-image: url('./images/Eva_Suit_Desktop_alternate_1cf9bae18e.jpg');
+}
+
+.section-f{
+    background-image: url('./images/make_life_multiplanetary_desktop_3fa7cff73c.jpg');
+}
+
+
+
+/* responsive media query */
+
+@media (max-width: 960px) {
+    /* hide desktop menu */
+    .desktop-main-menu {
+        display: none;
+    }
+    .mobile-only {
+        display: block;
+    }
+    .shopping {
+        display: none;
+    }
+    .logo {
+        width: 150px;
+        margin: auto;
+    }
+   
+    
+}
+
+@media (max-width: 600px) {
+    .section-content {
+        bottom: 50px;
+        left: 30px;
+        width: 85%;
+    }
+    .section-content h1 {
+        font-size: 34px;
+    }
+  
+    footer ul li:first-child {
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    footer ul li {
+        margin-left: 15px;
+    }
+}
